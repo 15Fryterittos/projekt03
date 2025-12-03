@@ -121,7 +121,7 @@ footer {
   display: inline-block;
   padding: 0.6rem 1.2rem;
   background-color: #0369a1;
-  color: white;
+  color: rgb(235, 235, 235);
   border-radius: 0.5rem;
   text-decoration: none;
   transition: background-color 0.2s ease;
@@ -129,4 +129,14 @@ footer {
 
 .back-btn:hover {
   background-color: #0ea5e9;
+}
+
+.edit-btn {
+  margin-top: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  background-color: #85a3db;
+  color: rgb(235, 235, 235);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

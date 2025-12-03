@@ -1,9 +1,5 @@
 <%- include("head_partial.ejs") %>
 
-<div style="text-align:center; margin-top:2rem;">
-  <a href="/fish" class="back-btn">← Powrót do listy gatunków</a>
-</div>
-
 <main>
   <h1><%= title %></h1>
 
@@ -19,9 +15,13 @@
           method="POST"
           onsubmit="return confirm('Na pewno chcesz usunąć tę rybę?');"
           style="display:inline"
-        >
+        ><br>
           <button type="submit" class="delete-btn">Usuń</button>
         </form>
+
+        <a href="/fish/<%= species.id %>/edit/<%= fish.id %>" class="edit-btn">
+          Edytuj
+        </a>
       </li>
     <% }) %>
   </ul>
@@ -30,6 +30,11 @@
     <h3>Dodaj nową rybę</h3>
     <%- include("forms/new_fish.ejs") %>
   </div>
+
+  <div style="text-align:center; margin-top:2rem;">
+    <a href="/fish" class="back-btn">← Powrót do listy gatunków</a>
+  </div>
+
 </main>
 
 <%- include("foot_partial.ejs") %>
