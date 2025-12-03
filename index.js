@@ -56,6 +56,34 @@ app.post("/fish/:species_id/delete/:fish_id", (req, res) => {
   res.redirect(`/fish/${species_id}`);
 }); 
 
+app.get("/fish/:species_id/edit/:fish_id", (req, res) => {
+  const { species_id, fish_id } = req.params;
+
+  if (!fishy.hasSpecies(species_id)) {
+  return res.sendStatus(404);
+  }
+
+  const fish = fishy.getFish(fish_id);
+
+  const species = fishy.getSpecies(species_id);
+  res.render("edit_fish", {
+  title: "Edytuj rybę",
+  species,
+  fish
+});
+
+});
+
+app.post("/fish/:species_id/edit/:fish_id", (req, res) => {
+  const { species_id, fish_id } = req.params;
+  const { name, description, habitat } = req.body;
+
+  if (!fishy.hasSpecies(species_id)) return res.sendStatus(404);
+
+  fishy.updateFish(fish_id, { name, description, habitat });
+  res.redirect(`/fish/${species_id}`);
+});
+
 app.listen(port, () => {
   console.log(`Serwer działa: http://localhost:${port}`);
 });

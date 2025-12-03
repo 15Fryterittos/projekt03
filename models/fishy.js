@@ -97,6 +97,27 @@ export function deleteFish(fishId) {
   return stmt.run(fishId);
 }
 
+export function getFish(fishId) {
+  return db.prepare(`
+    SELECT id, species_id, name, description, habitat
+    FROM fishes
+    WHERE id = ?;
+  `).get(fishId);
+}
+
+export function updateFish(fishId, newData) {
+  return db.prepare(`
+    UPDATE fishes
+    SET name = ?, description = ?, habitat = ?
+    WHERE id = ?;
+  `).run(
+    newData.name,
+    newData.description,
+    newData.habitat,
+    fishId
+  );
+}
+
 export default {
   getSpeciesSummaries,
   getSpecies,
@@ -105,4 +126,6 @@ export default {
   addFish,
   validateFishData,
   deleteFish,
+  getFish,
+  updateFish
 };

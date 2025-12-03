@@ -1,0 +1,24 @@
+<%- include("head_partial.ejs") %>
+
+<main>
+  <h1>Edytuj rybę</h1>
+
+  <form action="/fish/<%= species.id %>/edit/<%= fish.id %>" method="POST">
+    <label>Nazwa:</label>
+    <input type="text" name="name" value="<%= fish.name %>" required />
+
+    <label>Opis:</label>
+    <input type="text" name="description" value="<%= fish.description %>" required />
+
+    <label>Środowisko:</label>
+    <input type="text" name="habitat" value="<%= fish.habitat %>" required />
+
+    <button type="submit">Zapisz zmiany</button>
+  </form>
+
+  <div style="text-align:center; margin-top:1.5rem;">
+    <a href="/fish/<%= species.id %>" class="back-btn">← Powrót</a>
+  </div>
+</main>
+
+<%- include("foot_partial.ejs") %>
