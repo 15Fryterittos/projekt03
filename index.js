@@ -10,6 +10,10 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "public" });
+});
+
 app.get("/fish", (req, res) => {
   const species = fishy.getSpeciesSummaries();
   res.render("species", { title: "Gatunki ryb", species });
